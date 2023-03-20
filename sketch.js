@@ -1,7 +1,5 @@
-let r, g, b, y, rand;
-let circleX, circleY;
-// let brushStyle;
-// let brushSize;
+let r, g, b;
+let x=30, y=30, z=30;
 
 function setup() {
   createCanvas(800, 800);
@@ -14,7 +12,7 @@ function draw() {
   fill(120);
   textSize(30);
   text("Color Pick",70, 50); 
-  text("Brush Style",70, 180); 
+  text("Brush Size",70, 180); 
   
   fill(235, 64, 52);  
   rect(70, 70, 40, 40);
@@ -43,135 +41,120 @@ function draw() {
   text("Clear",674, 88);   
   text("All",684, 102);   
   
-  //brush style
-  stroke(4);
-  fill(220);
-  rect(70, 200, 40, 40);
-  circle(190, 220, 40);
-  ellipse(290, 220, 80, 40);
-  // triangle(270, 200, 310, 240, 270, 240);
- 
-}
-
-function mousePressed(){
+  //brush size description
+  fill(80);
+  textSize(14);
+  text("Brush Size + : Press Up-Arrow", 70, 200);   
+  text("Brush Size - : Press Down-Arrow", 70, 220); 
+  text("Round Brush : Press Left-Arrow", 70, 240); 
+  text("Square Brush : Press Right-Arrow", 70, 260); 
 
   if ((mouseX > 70) && (mouseX < 110) && (mouseY > 70) && (mouseY < 110)) {
+    if(mouseIsPressed){
     r = 235;
     g = 64;
     b = 52;
-    // fill(235, 64, 52);
-    // stroke(235, 64, 52);
-    // strokeWeight(5);
+    // fill (r, g, b);
+        }
       }
   
   else if ((mouseX > 170) && (mouseX < 210) && (mouseY > 70) && (mouseY < 110)) {
+    if(mouseIsPressed){
     r = 52;
     g = 235;
     b = 82;
-    // fill(52, 235, 82);
-    // stroke(52, 235, 82);
-    // strokeWeight(5);
+    // fill (r, g, b);
+    }
       }
   else if ((mouseX > 270) && (mouseX < 310) && (mouseY > 70) && (mouseY < 110)) {
+    if(mouseIsPressed){
     r = 52;
     g = 55;
     b = 235;
-    // fill(52, 55, 235);
-    // stroke(52, 55, 235);
-    // strokeWeight(5);
+    // fill (r, g, b);
+    }
       }  
   
   else if ((mouseX > 370) && (mouseX < 410) && (mouseY > 70) && (mouseY < 110)) {
+    if(mouseIsPressed){
     r = 235;
     g = 229;
     b = 52;
-    // fill(235, 229, 52);
-    // stroke(235, 229, 52);
-    // strokeWeight(5);
+    // fill (r, g, b);
+    }
       }    
       
   else if ((mouseX > 470) && (mouseX < 510) && (mouseY > 70) && (mouseY < 110)) {
+    if(mouseIsPressed){
     r = random(255);
     g = random(255);
     b = random(255);
-    // stroke(random(255), random(255), random(255));
-    // strokeWeight(5);
+    // fill (r, g, b);
+    }
       } 
   
   else if ((mouseX > 570) && (mouseX < 610) && (mouseY > 70) && (mouseY < 110)) {
+    if(mouseIsPressed){
     r = 220;
     g = 220;
     b = 220;
-    // stroke(220);
-    // strokeWeight(5);
+    // fill (r, g, b);
+    }
       }  
     
   else if ((mouseX > 670) && (mouseX < 710) && (mouseY > 70) && (mouseY < 110)) {
-
+    if(mouseIsPressed){
     background (220);
       }  
-
+  }
+  
 }
 
-  // brush style
-// function mousePressed(){
-//   if ((mouseX > 70) && (mouseX < 130) && (mouseY > 200) && (mouseY < 240)) {
-
-//   rectBrush();
-//       }  
-
-//     else if ((mouseX > 170) && (mouseX < 230) && (mouseY > 200) && (mouseY < 240)) {
-
-//   circleBrush();
-//       } 
-// }
-
- 
 function mouseDragged(){
   noStroke();
   fill (r, g, b);
-
-  // rectBrush(); 
-  circleBrush();
-  // ellipseBrush();
   
-  // ellipse(mouseX, mouseY, 10, 10);  
- // if (mouseIsPressed === true) {
- //  line(mouseX, mouseY, pmouseX, pmouseY);
-   // }
-
+  // circle(mouseX, mouseY, x, y);
+  
+  rectX0=mouseX;
+  rectY0=mouseY;
+  rectX1=30;
+  rectY1=30;
+  rectZ=0;
+  rect(mouseX, mouseY, x, y, z)
+  
  }
 
-// function mouseDragged1(){
+
+// Brush Variation
+
+function keyPressed() {
+  if (keyCode === UP_ARROW) {
+    x += 5;
+    y += 5;
+}
+
+  if (keyCode === DOWN_ARROW) {
+    x -= 5;
+    y -= 5;
+}
+  if (keyCode === LEFT_ARROW) {
+    z = x;
+}
+  if (keyCode === RIGHT_ARROW) {
+    z = 0;
+}
+}
+
+// function keyTyped(){
+      
+//   if (key == 'a') {
+//     rectZ = rectZ+10;
+// }
   
-//   if (mouseIsPressed === true) {
-//   rect(mouseX, mouseY, 10, 10);
-//       }  
-
-//   }
-
-// function mouseDragged2(){
+//   if (key == 'b') {
+//     rectZ = rectZ+10;
+// }
   
-//   if (mouseIsPressed === true) {
-//   circle(mouseX, mouseY, 10);
-//       }  
+// }
 
-//   }
-
-function rectBrush() {
-  if (mouseIsPressed){
-  rect(mouseX, mouseY, 30, 30);
-}
-}
-
-function circleBrush() {
-  if (mouseIsPressed){
-  circle(mouseX, mouseY, 30);
-}
-}
-
-function ellipseBrush() {
-  if (mouseIsPressed){
-  ellipse(mouseX, mouseY, 60, 30);
-}
-}
